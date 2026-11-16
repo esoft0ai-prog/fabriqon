@@ -10,6 +10,7 @@ import { runOnboarding } from './onboarding.js';
 import { showLock } from './lock.js';
 import { computeAlerts } from './alerts.js';
 import { debounce, initials } from './utils.js';
+import { playViewTransition, initTouchTilt } from './motion.js';
 
 const root = document.getElementById('app');
 
@@ -276,6 +277,7 @@ async function mountShell() {
   onDbEvent('versionchange', () => showBanner('ver', html`${icon('refresh-cw', 16)}<span>Fabriqon was updated in another tab.</span><button class="btn btn-sm btn-primary" data-reload>Reload</button>`, 'banner-warn'));
 
   const content = document.getElementById('content');
+  initTouchTilt();
   await startRouter(ROUTES, content, {
     onNavigate: ({ path, route }) => {
       // Dialogs belong to the page that opened them; close them on navigation.
@@ -285,6 +287,7 @@ async function mountShell() {
       document.getElementById('topbar-title').textContent = route.title;
       document.title = `${route.title} · Fabriqon`;
       window.scrollTo(0, 0);
+      playViewTransition(content);
     },
     onRendered: () => { if (document.activeElement === document.body) content.focus({ preventScroll: true }); },
     onError: (err, el) => {

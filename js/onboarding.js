@@ -29,9 +29,10 @@ export function runOnboarding(root) {
     const data = { type: BUSINESS_TYPES[0], currency: 'NGN', unit: 'cm', fabricUnit: 'yards', countryCode: '234' };
     let step = 0;
     let logo = '';
+    let painted = false;
 
-    const shell = (inner) => html`<div class="gate"><div class="gate-card">
-      <div class="gate-brand"><img class="brand-mark" src="assets/icons/logo.svg" alt=""><strong>FABRI<span>QON</span></strong></div>
+    const shell = (inner) => html`<div class="gate"><div class="gate-card ${painted ? 'step-in' : 'enter'}">
+      <div class="gate-brand"><span class="logo-3d"><img class="brand-mark" src="assets/icons/logo.svg" alt=""></span><strong>FABRI<span>QON</span></strong></div>
       <div class="steps" aria-hidden="true">${[0, 1, 2, 3].map(i => html`<span class="${i <= step ? 'on' : ''}"></span>`)}</div>
       ${inner}
       <p class="gate-credit">Developed by <strong>Abdullah</strong> · Esoft Dev</p>
@@ -94,6 +95,7 @@ export function runOnboarding(root) {
 
     const paint = () => {
       root.innerHTML = String(shell(steps[step]()));
+      painted = true;
       const form = root.querySelector('[data-step]');
       root.querySelector('[data-back]')?.addEventListener('click', () => { Object.assign(data, readForm(form)); step--; paint(); });
       root.querySelector('#logo-input')?.addEventListener('change', async (e) => {

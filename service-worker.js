@@ -3,7 +3,7 @@
  * `npm run build:sw` — run it after changing any app file. */
 
 // <generated>
-const VERSION = 'a08b1dc1a679';
+const VERSION = 'dea0fb50a245';
 const PRECACHE = [
   './',
   'assets/fonts/inter-latin-ext-wght-normal.woff2',
@@ -18,6 +18,7 @@ const PRECACHE = [
   'css/dashboard.css',
   'css/layout.css',
   'css/main.css',
+  'css/motion.css',
   'css/responsive.css',
   'css/themes.css',
   'css/variables.css',
@@ -51,6 +52,7 @@ const PRECACHE = [
   'js/modules/orders.js',
   'js/modules/production.js',
   'js/modules/settings.js',
+  'js/motion.js',
   'js/onboarding.js',
   'js/pwa.js',
   'js/quick.js',
@@ -87,7 +89,9 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
   event.waitUntil((async () => {
     const keys = await caches.keys();
-    await Promise.all(keys.filter((k) => k.startsWith('fabriqon-') && k !== CACHE && k !== RUNTIME).map((k) => caches.delete(k)));
+    // Drop old versions and the runtime cache: a runtime copy saved during an
+    // earlier update must never shadow the fresh precache.
+    await Promise.all(keys.filter((k) => k.startsWith('fabriqon-') && k !== CACHE).map((k) => caches.delete(k)));
     await self.clients.claim();
   })());
 });
@@ -122,7 +126,9 @@ self.addEventListener('fetch', (event) => {
 
   // Static assets: cache first, then network (and remember it).
   event.respondWith((async () => {
-    const cached = await caches.match(req, { ignoreSearch: true });
+    // This version's precache first, then anything picked up at runtime.
+    const cached = (await (await caches.open(CACHE)).match(req, { ignoreSearch: true }))
+      || (await (await caches.open(RUNTIME)).match(req, { ignoreSearch: true }));
     if (cached) return cached;
     try {
       const res = await fetch(req);
