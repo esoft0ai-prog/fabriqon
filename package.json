@@ -1,0 +1,19 @@
+{
+  "name": "fabriqon",
+  "version": "1.0.0",
+  "description": "Fabriqon — offline-first tailoring management PWA (HTML, CSS, vanilla JS, IndexedDB).",
+  "private": true,
+  "type": "module",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "node tools/serve.mjs 5173",
+    "build:sw": "node tools/build-sw.mjs",
+    "build:icons": "node tools/build-png-icons.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node tools/check-syntax.mjs",
+    "ai-proxy": "npm --prefix server start"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

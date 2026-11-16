@@ -1,0 +1,7 @@
+node_modules/
+server/node_modules/
+server/.env
+.claude/
+promo/stills/
+promo/*.mp4
+promo/*.jpg

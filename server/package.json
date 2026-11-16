@@ -1,0 +1,16 @@
+{
+  "name": "fabriqon-ai-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Optional server-side proxy that keeps the AI provider key off the Fabriqon client.",
+  "scripts": {
+    "start": "node ai-proxy.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Fabriqon promo</title>
+<link rel="stylesheet" href="../css/variables.css">
+<style>
+  :root { --navy: #111B31; --navy2: #16233F; --gold: #D8B465; --gold2: #C59A3C; --cream: #F6EDD9; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--navy); font-family: 'Inter', system-ui, sans-serif; color: #fff; -webkit-font-smoothing: antialiased; }
+  #stage { position: relative; width: 1080px; height: 1920px; overflow: hidden;
+    background: radial-gradient(1100px 900px at 85% 10%, rgba(197,154,60,.18), transparent 60%), radial-gradient(900px 900px at 0% 100%, rgba(43,66,114,.55), transparent 60%), linear-gradient(180deg, #0B1222, #16233F 55%, #0E1628); }
+  .ring { position: absolute; border-radius: 50%; border: 2px dashed rgba(216,180,101,.28); }
+  #ring1 { width: 1500px; height: 1500px; left: 380px; top: -620px; }
+  #ring2 { width: 900px; height: 900px; left: -420px; top: 1250px; border-style: solid; border-color: rgba(216,180,101,.14); }
+  .tick { position: absolute; left: 0; right: 0; height: 18px; bottom: 0; background: repeating-linear-gradient(90deg, rgba(216,180,101,.35) 0 2px, transparent 2px 27px); opacity: .5; }
+
+  #caption { position: absolute; left: 70px; right: 70px; top: 96px; text-align: center; }
+  #title { text-wrap: balance; font-size: 76px; font-weight: 800; line-height: 1.06; letter-spacing: -0.03em; }
+  #title em { font-style: normal; color: var(--gold); }
+  #sub { text-wrap: balance; margin-top: 22px; font-size: 36px; font-weight: 500; color: #C9D0DE; line-height: 1.3; }
+
+  #phone { position: absolute; left: 50%; top: 420px; width: 742px; height: 1560px; margin-left: -371px; border-radius: 96px; padding: 30px;
+    background: linear-gradient(145deg, #2a3550, #0a0f1a 60%); box-shadow: 0 60px 120px rgba(0,0,0,.55), 0 0 0 3px #3a4766, inset 0 0 0 2px rgba(255,255,255,.06); }
+  #screen { position: relative; width: 682px; height: 1500px; border-radius: 70px; overflow: hidden; background: #F6F5F1; }
+  #app { position: absolute; left: 0; top: 96px; width: 390px; height: 803px; border: 0; transform: scale(1.7487); transform-origin: 0 0; background: #F6F5F1; }
+  #status { position: absolute; left: 0; right: 0; top: 0; height: 96px; background: #F6F5F1; display: flex; align-items: center; justify-content: space-between; padding: 22px 64px 0; font: 700 30px 'Inter', sans-serif; color: #1E2229; z-index: 1; }
+  #status .r { display: flex; gap: 12px; align-items: center; }
+  #notch { position: absolute; top: 18px; left: 50%; width: 190px; height: 50px; margin-left: -95px; background: #05080f; border-radius: 30px; z-index: 3; }
+  #wipe { position: absolute; inset: 0; background: var(--navy2); z-index: 2; opacity: 0; display: grid; place-items: center; }
+  #wipe img { width: 160px; height: 160px; }
+
+  .center { position: absolute; left: 0; right: 0; text-align: center; }
+  #hook { top: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 80px; }
+  #hook .big { font-size: 104px; font-weight: 850; line-height: 1.02; letter-spacing: -0.035em; }
+  #hook .big em { font-style: normal; color: var(--gold); }
+  #hook .note { width: 420px; height: 400px; margin-bottom: 70px; border-radius: 18px; background: #f3e9cf; transform: rotate(-7deg); box-shadow: 0 30px 60px rgba(0,0,0,.4); position: relative; overflow: hidden; }
+  #hook .note::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(180deg, transparent 0 46px, rgba(44,103,168,.25) 46px 48px); }
+  #hook .note span { position: absolute; left: 30px; white-space: nowrap; font: italic 600 27px 'Segoe Print', 'Comic Sans MS', cursive; color: #2b3b6b; }
+  #hook .strike { position: absolute; left: 40px; right: 40px; top: 50%; height: 14px; background: #E5484D; border-radius: 8px; transform: rotate(-12deg) scaleX(0); transform-origin: left; }
+  #hook .then { margin-top: 46px; font-size: 52px; font-weight: 600; color: #C9D0DE; }
+
+  #logo { top: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  #logo img { width: 300px; height: 300px; border-radius: 70px; box-shadow: 0 40px 100px rgba(0,0,0,.5), 0 0 0 2px rgba(216,180,101,.3); }
+  .word { margin-top: 70px; font-size: 140px; font-weight: 800; letter-spacing: .08em; }
+  .word span { color: var(--gold); }
+  .tag { margin-top: 26px; font-size: 44px; font-weight: 500; color: #C9D0DE; }
+
+  #badge { position: absolute; left: 50%; top: 1080px; width: 900px; margin-left: -450px; padding: 44px 50px; border-radius: 44px; background: rgba(11,18,34,.92); border: 2px solid rgba(216,180,101,.45); box-shadow: 0 40px 90px rgba(0,0,0,.55); display: flex; align-items: center; gap: 36px; z-index: 5; }
+  #badge .ic { width: 130px; height: 130px; border-radius: 34px; background: rgba(216,180,101,.16); display: grid; place-items: center; flex-shrink: 0; }
+  #badge h3 { font-size: 44px; white-space: nowrap; font-weight: 800; letter-spacing: -0.02em; }
+  #badge p { font-size: 32px; color: #C9D0DE; margin-top: 8px; line-height: 1.3; }
+
+  #pdf { position: absolute; left: 50%; top: 980px; width: 600px; margin-left: -300px; border-radius: 26px; background: #fff; color: #1E2229; overflow: hidden; box-shadow: 0 50px 110px rgba(0,0,0,.55); z-index: 5; }
+  #pdf .head { background: var(--navy2); padding: 30px 36px; display: flex; justify-content: space-between; align-items: center; }
+  #pdf .head b { color: #fff; font-size: 30px; }
+  #pdf .head i { color: var(--gold2); font-style: normal; font-weight: 800; font-size: 34px; letter-spacing: .05em; }
+  #pdf .body { padding: 28px 36px 34px; font-size: 26px; }
+  #pdf .row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #eee; }
+  #pdf .total { background: var(--navy2); color: #fff; margin-top: 18px; padding: 16px 20px; border-radius: 12px; font-weight: 800; display: flex; justify-content: space-between; }
+  #pdf .file { position: absolute; right: -10px; top: -10px; }
+
+  #cta { top: 0; bottom: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 70px; }
+  #cta img { width: 220px; height: 220px; border-radius: 54px; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  #cta .word { font-size: 120px; margin-top: 50px; }
+  #cta .tag { font-size: 46px; color: #fff; font-weight: 700; }
+  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; margin-top: 60px; }
+  .chips span { font-size: 32px; font-weight: 600; padding: 16px 30px; border-radius: 999px; border: 2px solid rgba(216,180,101,.45); background: rgba(216,180,101,.08); color: var(--cream); }
+  .ask { margin-top: 80px; font-size: 48px; font-weight: 800; background: var(--gold); color: var(--navy); padding: 26px 48px; border-radius: 28px; box-shadow: 0 20px 50px rgba(197,154,60,.35); }
+  #progress { position: absolute; left: 0; top: 0; height: 10px; background: var(--gold); width: 0; z-index: 10; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="ring" id="ring1"></div><div class="ring" id="ring2"></div><div class="tick"></div>
+  <div id="progress"></div>
+
+  <div id="hook" class="center">
+    <div class="note"><span style="top:40px">Mr Bayo – chest 40</span><span style="top:94px">waist 34?? sleeve</span><span style="top:148px">Mrs Eze owes ₦15k</span><span style="top:202px">gown due… Friday?</span><span style="top:256px">trouser 41½</span><div class="strike"></div></div>
+    <div class="big">Still keeping your tailoring business in a <em>notebook?</em></div>
+    <div class="then">There's a smarter way. 👇</div>
+  </div>
+
+  <div id="logo" class="center">
+    <img src="../assets/icons/icon-512.png" alt="">
+    <div class="word">FABRI<span>QON</span></div>
+    <div class="tag">The app built for tailors & fashion designers</div>
+  </div>
+
+  <div id="caption"><div id="title"></div><div id="sub"></div></div>
+
+  <div id="phone"><div id="screen"><div id="status"><span>9:41</span><span class="r"><svg width="34" height="22" viewBox="0 0 34 22"><rect x="0" y="14" width="6" height="8" rx="1.5" fill="#1E2229"/><rect x="9" y="10" width="6" height="12" rx="1.5" fill="#1E2229"/><rect x="18" y="5" width="6" height="17" rx="1.5" fill="#1E2229"/><rect x="27" y="0" width="6" height="22" rx="1.5" fill="#1E2229"/></svg><svg width="52" height="24" viewBox="0 0 52 24"><rect x="1" y="1" width="44" height="22" rx="6" fill="none" stroke="#1E2229" stroke-width="2"/><rect x="4" y="4" width="34" height="16" rx="3.5" fill="#1E2229"/><rect x="47" y="8" width="4" height="8" rx="2" fill="#1E2229"/></svg></span></div><div id="notch"></div><iframe id="app" src="../index.html#/dashboard" title="Fabriqon app"></iframe><div id="wipe"><img src="../assets/icons/logo.svg" alt=""></div></div></div>
+
+  <div id="pdf">
+    <div class="head"><b>Adunni Couture</b><i>INVOICE</i></div>
+    <div class="body">
+      <div class="row"><span>Bridesmaid gown × 3</span><b>₦165,000</b></div>
+      <div class="row"><span>Deposit paid</span><b style="color:#1E8455">₦100,000</b></div>
+      <div class="total"><span>Balance due</span><span>₦65,000</span></div>
+    </div>
+  </div>
+
+  <div id="badge">
+    <div class="ic"><svg width="74" height="74" viewBox="0 0 24 24" fill="none" stroke="#D8B465" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/><path d="M5 12.859a10 10 0 0 1 5.17-2.69"/><path d="M19 12.859a10 10 0 0 0-2.007-1.523"/><path d="M2 8.82a15 15 0 0 1 4.177-2.643"/><path d="M22 8.82a15 15 0 0 0-11.288-3.764"/><path d="m2 2 20 20"/></svg></div>
+    <div><h3>No internet? No problem.</h3><p>Fabriqon keeps working offline. Your records stay safe on your device.</p></div>
+  </div>
+
+  <div id="cta" class="center">
+    <img src="../assets/icons/icon-512.png" alt="">
+    <div class="word">FABRI<span>QON</span></div>
+    <div class="tag">Run your tailoring business like a pro.</div>
+    <div class="chips"><span>Customers</span><span>Measurements</span><span>Orders</span><span>Payments</span><span>Inventory</span><span>Reports</span><span>Works offline</span></div>
+    <div class="ask">Comment “FABRIQON” for early access</div>
+  </div>
+</div>
+<script type="module" src="promo.js"></script>
+</body>
+</html>

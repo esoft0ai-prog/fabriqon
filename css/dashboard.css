@@ -1,0 +1,55 @@
+/* Dashboard & analytics */
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--sp-4); margin-bottom: var(--sp-5); }
+.stat { display: flex; gap: 14px; padding: 18px; align-items: flex-start; }
+.stat-icon { width: 42px; height: 42px; border-radius: var(--r-sm); display: grid; place-items: center; flex-shrink: 0; }
+.tone-navy { background: color-mix(in srgb, var(--primary) 10%, transparent); color: var(--primary); }
+.tone-gold { background: var(--accent-soft); color: var(--accent-ink); }
+.tone-green { background: var(--success-soft); color: var(--success); }
+.tone-red { background: var(--danger-soft); color: var(--danger); }
+.tone-amber { background: var(--warning-soft); color: var(--warning); }
+.tone-blue { background: var(--info-soft); color: var(--info); }
+.stat-body { min-width: 0; }
+.stat-label { font-size: var(--fs-xs); color: var(--text-2); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.stat-value { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; margin-top: 2px; overflow-wrap: anywhere; line-height: 1.25; }
+.stat-sub { font-size: var(--fs-xs); color: var(--text-3); margin-top: 2px; }
+
+.hero {
+  position: relative; overflow: hidden;
+  display: flex; justify-content: space-between; align-items: center; gap: var(--sp-5); flex-wrap: wrap;
+  padding: 22px 24px; margin-bottom: var(--sp-5);
+  border-radius: var(--r-lg);
+  background: var(--navy-800);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+:root[data-theme="dark"] .hero { background: #121A2B; border: 1px solid var(--border); }
+.hero::after { content: ''; position: absolute; right: -60px; top: -80px; width: 320px; height: 320px; border-radius: 50%; border: 1px dashed rgba(216,180,101,.35); pointer-events: none; }
+.hero::before { content: ''; position: absolute; right: 40px; bottom: -120px; width: 240px; height: 240px; border-radius: 50%; border: 1px solid rgba(216,180,101,.18); pointer-events: none; }
+.hero h1 { font-size: 1.4rem; font-weight: 700; }
+.hero p { color: #B8C0D2; font-size: var(--fs-sm); margin-top: 4px; }
+.hero-figures { display: flex; gap: 28px; flex-wrap: wrap; position: relative; z-index: 1; }
+.hero-figures div { display: flex; flex-direction: column; }
+.hero-figures small { color: #B8C0D2; font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: .06em; }
+.hero-figures strong { font-size: 1.35rem; font-variant-numeric: tabular-nums; }
+.hero-figures strong.gold { color: var(--gold-400); }
+
+.quick-actions { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--sp-3); margin-bottom: var(--sp-5); }
+.qa { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px 8px; text-align: center; font-size: var(--fs-xs); font-weight: 600; color: var(--text-2); }
+.qa .qa-icon { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-ink); transition: transform var(--t-fast); }
+.qa:hover { color: var(--text); }
+.qa:hover .qa-icon { transform: scale(1.06); }
+
+.dash-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--sp-4); }
+.span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; } .span-6 { grid-column: span 6; } .span-7 { grid-column: span 7; } .span-8 { grid-column: span 8; } .span-12 { grid-column: span 12; }
+.chart-box { position: relative; height: 280px; }
+.chart-box.sm { height: 220px; }
+.legend-list { display: flex; flex-direction: column; gap: 8px; font-size: var(--fs-sm); }
+.legend-list li { display: flex; align-items: center; gap: 8px; list-style: none; }
+.legend-list .sw { width: 10px; height: 10px; border-radius: 3px; }
+.legend-list .v { margin-left: auto; font-weight: 600; font-variant-numeric: tabular-nums; }
+.pipeline { display: flex; flex-direction: column; gap: 10px; }
+.pipeline-row { display: grid; grid-template-columns: 150px 1fr 36px; gap: 10px; align-items: center; font-size: var(--fs-sm); }
+.pipeline-row .bar { height: 8px; border-radius: 4px; background: var(--surface-3); overflow: hidden; }
+.pipeline-row .bar span { display: block; height: 100%; background: var(--primary); border-radius: inherit; }
+.pipeline-row .n { text-align: right; font-weight: 600; font-variant-numeric: tabular-nums; }
+.report-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-4); }
