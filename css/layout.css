@@ -45,7 +45,7 @@
 /* Collapsed (desktop) */
 .app.sidebar-collapsed .sidebar { width: var(--sidebar-w-collapsed); }
 .app.sidebar-collapsed .brand-name, .app.sidebar-collapsed .nav-label, .app.sidebar-collapsed .nav-section,
-.app.sidebar-collapsed .biz-meta, .app.sidebar-collapsed .nav-count { display: none; }
+.app.sidebar-collapsed .biz-meta, .app.sidebar-collapsed .nav-count, .app.sidebar-collapsed .credit { display: none; }
 .app.sidebar-collapsed .nav-link { justify-content: center; padding: 10px; }
 .app.sidebar-collapsed .brand { justify-content: center; padding: 0; }
 .app.sidebar-collapsed .biz-chip { justify-content: center; }
@@ -123,3 +123,9 @@
 @media (max-width: 900px) {
   .mobile-only, .search-toggle { display: inline-grid !important; }
 }
+
+/* Developer credit */
+.credit { margin: 10px 4px 0; font-size: .72rem; line-height: 1.4; color: var(--sidebar-text); opacity: .75; text-align: center; }
+.credit strong { color: var(--accent); font-weight: 600; }
+.gate-credit { margin: var(--sp-6) 0 0; padding-top: var(--sp-4); border-top: 1px solid var(--border); font-size: .78rem; color: var(--text-3); text-align: center; }
+.gate-credit strong { color: var(--accent); font-weight: 600; }

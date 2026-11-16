@@ -34,6 +34,7 @@ export function runOnboarding(root) {
       <div class="gate-brand"><img class="brand-mark" src="assets/icons/logo.svg" alt=""><strong>FABRI<span>QON</span></strong></div>
       <div class="steps" aria-hidden="true">${[0, 1, 2, 3].map(i => html`<span class="${i <= step ? 'on' : ''}"></span>`)}</div>
       ${inner}
+      <p class="gate-credit">Developed by <strong>Abdullah</strong> · Esoft Dev</p>
     </div></div>`;
 
     const steps = [

@@ -87,6 +87,7 @@ function shellHtml() {
           ${b?.logo ? html`<img src="${b.logo}" alt="">` : html`<span class="avatar avatar-initials">${initials(b?.name || 'F')}</span>`}
           <span class="biz-meta"><strong>${b?.name || 'My business'}</strong><small>${b?.type || ''}</small></span>
         </a>
+        <p class="credit">Developed by <strong>Abdullah</strong> · Esoft Dev</p>
       </div>
     </aside>
     <div class="scrim" data-action="close-nav"></div>

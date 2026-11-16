@@ -12,7 +12,7 @@
   .app.nav-open .sidebar { transform: none; }
   .app.nav-open .scrim { opacity: 1; pointer-events: auto; }
   .app.sidebar-collapsed .sidebar { width: min(300px, 86vw); }
-  .app.sidebar-collapsed .brand-name, .app.sidebar-collapsed .nav-label, .app.sidebar-collapsed .nav-section, .app.sidebar-collapsed .biz-meta { display: initial; }
+  .app.sidebar-collapsed .brand-name, .app.sidebar-collapsed .nav-label, .app.sidebar-collapsed .nav-section, .app.sidebar-collapsed .biz-meta, .app.sidebar-collapsed .credit { display: initial; }
   .app.sidebar-collapsed .nav-link { justify-content: flex-start; padding: 9px 12px; }
   .main, .app.sidebar-collapsed .main { margin-left: 0; }
   .collapse-btn { display: none; }

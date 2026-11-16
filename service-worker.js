@@ -3,7 +3,7 @@
  * `npm run build:sw` — run it after changing any app file. */
 
 // <generated>
-const VERSION = '1a33ff0e6166';
+const VERSION = 'a08b1dc1a679';
 const PRECACHE = [
   './',
   'assets/fonts/inter-latin-ext-wght-normal.woff2',
